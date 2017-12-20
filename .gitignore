@@ -3,6 +3,9 @@ development.json
 test.json
 production.json
 
+# Redis Dump
+dump.rdb
+
 # Logs
 logs
 *.log

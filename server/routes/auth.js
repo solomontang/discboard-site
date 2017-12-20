@@ -50,6 +50,15 @@ router.get('/auth/google/callback', middleware.passport.authenticate('google', {
   failureRedirect: '/login'
 }));
 
+router.get('/auth/discord', middleware.passport.authenticate('discord', {
+  scope: ['identify', 'guilds']
+}));
+
+router.get('/auth/discord/callback', middleware.passport.authenticate('discord', {
+  successRedirect: '/profile',
+  failureRedirect: '/login'
+}));
+
 router.get('/auth/facebook', middleware.passport.authenticate('facebook', {
   scope: ['public_profile', 'email']
 }));

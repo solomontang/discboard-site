@@ -2,6 +2,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const DiscordStrategy = require('passport-discord').Strategy;
 // const FacebookStrategy = require('passport-facebook').Strategy;
 // const TwitterStrategy = require('passport-twitter').Strategy;
 const config = require('config')['passport'];
@@ -107,12 +108,20 @@ passport.use('local-login', new LocalStrategy({
       });
   }));
 
-passport.use('google', new GoogleStrategy({
-  clientID: config.Google.clientID,
-  clientSecret: config.Google.clientSecret,
-  callbackURL: config.Google.callbackURL
+// passport.use('google', new GoogleStrategy({
+//   clientID: config.Google.clientID,
+//   clientSecret: config.Google.clientSecret,
+//   callbackURL: config.Google.callbackURL
+// },
+//   (accessToken, refreshToken, profile, done) => getOrCreateOAuthProfile('google', profile, done))
+// );
+
+passport.use('discord', new DiscordStrategy({
+  clientID: config.Discord.clientID,
+  clientSecret: config.Discord.clientSecret,
+  callbackURL: config.Discord.callbackURL
 },
-  (accessToken, refreshToken, profile, done) => getOrCreateOAuthProfile('google', profile, done))
+  (accessToken, refreshToken, profile, done) => getOrCreateOAuthProfile('discord', profile, done))
 );
 
 // passport.use('facebook', new FacebookStrategy({
@@ -135,6 +144,7 @@ passport.use('google', new GoogleStrategy({
 // );
 
 const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
+  console.log(type, oauthProfile);
   return models.Auth.where({ type, oauth_id: oauthProfile.id }).fetch({
     withRelated: ['profile']
   })

@@ -11,13 +11,12 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                <% if (user.email) { %>
+                <h3><span class="fa fa-user"></span> Discord</h3>
+                <% if (user) { %>
                 <p>
-                    <strong>display name</strong>: <%= user.display %><br>
-                    <strong>id</strong>: <%= user.id %><br>
-                    <strong>email</strong>: <%= user.email %>
+                    <strong>Username</strong>: <%= user.username %>#<%= user.discriminator %><br>
+                    <strong>Discord Id</strong>: <%= user.discord_id %><br>
+                    
                 </p>
 
                 <a href="/unlink/local" class="btn btn-default">Unlink</a>

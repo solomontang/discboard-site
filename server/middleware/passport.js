@@ -121,7 +121,9 @@ passport.use('discord', new DiscordStrategy({
   clientSecret: config.Discord.clientSecret,
   callbackURL: config.Discord.callbackURL
 },
-  (accessToken, refreshToken, profile, done) => getOrCreateOAuthProfile('discord', profile, done))
+  (accessToken, refreshToken, profile, done) => {
+    return getOrCreateOAuthUser(profile, done)
+  })
 );
 
 // passport.use('facebook', new FacebookStrategy({
@@ -206,5 +208,30 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done) => {
           and grant access when you register.' });
     });
 };
+
+const getOrCreateOAuthUser = (oauthUser, done) => {
+  return models.User.where({discord_id: oauthUser.id})
+  .fetch()
+    .then(user => {
+      let userInfo = {
+        discord_id: oauthUser.id,
+        username: oauthUser.username,
+        discriminator: oauthUser.discriminator,
+        avatar: oauthUser.avatar
+      }
+      if (user) {
+        return user.save(userInfo, {method: 'update'});
+      }
+      return models.User.forge(userInfo).save();
+    })
+    .then(profile => {
+      if (profile) {
+        done(null, profile.serialize());
+      }
+    })
+    .error(err => {
+      done(err, null);
+    })
+}
 
 module.exports = passport;

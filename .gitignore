@@ -2,6 +2,7 @@
 development.json
 test.json
 production.json
+stub_guilds.json
 
 # Redis Dump
 dump.rdb

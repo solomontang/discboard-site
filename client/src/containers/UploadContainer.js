@@ -1,11 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone';
-// import UploadZone from '../components/UploadZone';
-// import FileContainer from '../containers/FileContainer';
-import FileList from '../components/FileList';
+import FileContainer from './FileContainer';
 import {addFiles} from '../actions/files';
-
 class UploadContainer extends Component {
   constructor(props) {
     super(props);
@@ -13,22 +10,25 @@ class UploadContainer extends Component {
 
   render() {
     const {files} = this.props;
+    let dropzoneRef;
     return (
     <div>
       <Dropzone onDrop={this.props.onDrop} 
         accept="audio/*"
         maxSize={1024*1024}
-      />
-      <FileList files={files}/>
+        style={{position:"relative"}}
+        disableClick
+        ref={(node) => { dropzoneRef = node; }}
+      >
+        <FileContainer openDialog={() => dropzoneRef.open()}/>
+      </Dropzone>
     </div>
     )
   }
 }
 
-const mapStateToProps = ({files}) => {
-  return {
-    files
-  }
+const mapStateToProps = () => {
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {

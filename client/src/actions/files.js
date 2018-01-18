@@ -27,3 +27,29 @@ export const toggleApprove = (id) => {
   }
 }
 
+export const uploadFiles = () => {
+  return (dispatch, getState) => {
+    const {files} = getState();
+    const {byId, allIds} = files;
+    let file = byId[allIds[0]].value;
+    axios.get('/api/upload', {
+      params: {
+        filename: file.name,
+        filetype: file.type
+      }
+    })
+    .then(result => {
+      let signedUrl = result.data.signedUrl;
+      let options = {
+        headers: {
+          'Content-Type': file.type,
+        },
+        onUploadProgress: function (e) {
+          console.log(e);
+        }
+      };
+
+      return axios.put(signedUrl, file, options);
+    })
+  }
+}

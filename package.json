@@ -9,6 +9,7 @@
   "author": "Solomon Tang",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.184.0",
     "axios": "^0.17.1",
     "cuid": "^2.0.2",
     "react": "^15.4.2",

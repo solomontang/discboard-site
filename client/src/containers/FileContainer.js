@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
-import {toggleApprove} from '../actions/files';
+import {toggleApprove, uploadFiles} from '../actions/files';
 import FileList from '../components/FileList';
 
 const mapStateToProps = ({files}) => {
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     toggleApprove: (id) => {
       dispatch(toggleApprove(id));
+    },
+    uploadFiles: () => {
+      dispatch(uploadFiles());
     }
   }
 }

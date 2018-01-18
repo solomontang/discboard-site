@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
+const UploadController = require('../controllers').Upload
 
 router.route('/')
   .get((req, res) => {
@@ -11,4 +12,6 @@ router.route('/')
     res.status(201).send({ data: 'Posted!' });
   });
 
+router.route('/upload')
+  .get(UploadController.getSigned);
 module.exports = router;

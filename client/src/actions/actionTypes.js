@@ -10,6 +10,7 @@ export const FETCH_TASKS = 'FETCH_TASKS';
 export const FETCH_FILES = 'FETCH_FILES';
 export const ADD_FILES = 'ADD_FILES';
 export const DESTROY_FILE = 'DESTROY_FILE';
+export const TOGGLE_APPROVE = 'TOGGLE_APPROVE';
 
 export const SAVE_ERROR = 'SAVE_ERROR';
 export const SAVE_SUCCESS = 'SAVE_SUCCESS'

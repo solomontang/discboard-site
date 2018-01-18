@@ -1,13 +1,13 @@
 import axios from 'axios';
 import cuid from 'cuid';
-import {ADD_FILES} from './actionTypes';
+import {ADD_FILES, TOGGLE_APPROVE} from './actionTypes';
 
 export const addFiles = (files) => {
   let fileObj = {};
   
-  files.forEach((file) => {
-    file.id = cuid();
-    fileObj[file.id] = file;
+  files.forEach((value) => {
+    const id = cuid();
+    fileObj[id] = {value, id, approved: false};
   });
 
   return {
@@ -17,4 +17,13 @@ export const addFiles = (files) => {
     }
   }
 };
+
+export const toggleApprove = (id) => {
+  return {
+    type: TOGGLE_APPROVE,
+    payload: {
+      id
+    }
+  }
+}
 

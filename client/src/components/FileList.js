@@ -5,7 +5,7 @@ import FileRow from './FileRow'
 class FileList extends Component {
   
   render () {
-    const {files, openDialog} = this.props;
+    const {files, openDialog, toggleApprove} = this.props;
     return (
       <div>
         <Table compact celled definition striped>
@@ -19,7 +19,7 @@ class FileList extends Component {
           </Table.Header>
           <Table.Body>
             {files.allIds.map( id => {
-                return <FileRow file={files.byId[id]} key={id}/>
+                return <FileRow file={files.byId[id]} toggleApprove={toggleApprove} key={id}/>
               })}
           </Table.Body>
           <Table.Footer fullWidth>
@@ -29,12 +29,11 @@ class FileList extends Component {
                 <Button floated='right' icon labelPosition='left' primary size='small' onClick={openDialog}>
                   <Icon name='plus' /> Add Files
                 </Button>
-                <Button size='small'>Approve Selected</Button>
+                <Button size='small'>Upload Approved</Button>
               </Table.HeaderCell>
             </Table.Row>
           </Table.Footer>
         </Table>
-        
       </div>
     )
   }

@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {toggleApprove, uploadFiles} from '../actions/files';
 import FileList from '../components/FileList';
 
-const mapStateToProps = ({files}) => {
+const mapStateToProps = ({files, approvedFiles, currentFiles}) => {
   return {
-    files
+    files,
+    approvedFiles,
+    currentFiles
   }
 }
 

@@ -2,11 +2,16 @@ import { combineReducers } from 'redux';
 import user from './user';
 import tasks from './tasks';
 import files from './files';
+import approvedFiles from './approvedFiles';
+import currentFiles from './currentFiles';
+
 
 const rootReducer = combineReducers({
   user,
   tasks,
-  files
+  files,
+  approvedFiles,
+  currentFiles
 });
 
 export default rootReducer;

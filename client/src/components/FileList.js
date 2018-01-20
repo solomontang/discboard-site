@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {Table, Button, Icon} from 'semantic-ui-react';
 import FileRow from './FileRow'
 
-class FileList extends Component {
+class FileList extends PureComponent {
   
   render () {
-    const {files, openDialog, toggleApprove, uploadFiles} = this.props;
+    const {files, currentFiles, approvedFiles, openDialog, toggleApprove, uploadFiles} = this.props;
     return (
       <Table compact celled definition striped>
         <Table.Header>
@@ -17,8 +17,8 @@ class FileList extends Component {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {files.allIds.map( id => {
-              return <FileRow file={files.byId[id]} toggleApprove={toggleApprove} key={id}/>
+          {currentFiles.map( id => {
+              return <FileRow file={files[id]} approved= {approvedFiles[id]} toggleApprove={toggleApprove} key={id}/>
             })}
         </Table.Body>
         <Table.Footer fullWidth>

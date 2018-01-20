@@ -4,8 +4,9 @@ import {Table, Checkbox, Progress} from 'semantic-ui-react';
 
 const FileRow = (props) => (
   <Table.Row>
+    {console.log('render')}
     <Table.Cell collapsing>
-      <Checkbox toggle key={props.file.id} checked={props.file.approved} onClick={() => props.toggleApprove(props.file.id)}/>
+      <Checkbox toggle name={props.file.id} checked={props.file.approved} onClick={() => props.toggleApprove(props.file.id)}/>
     </Table.Cell>
     <Table.Cell>{props.file.value.name}</Table.Cell>
     <Table.Cell collapsing>
@@ -14,7 +15,7 @@ const FileRow = (props) => (
       </audio>
     </Table.Cell>
     <Table.Cell>
-      <Progress percent={0}/>
+      <Progress disabled value={0} total= {100} progress='percent'/>
     </Table.Cell>
   </Table.Row>
 )

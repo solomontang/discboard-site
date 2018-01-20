@@ -7,7 +7,7 @@ export const addFiles = (files) => {
   
   files.forEach((value) => {
     const id = cuid();
-    fileObj[id] = {value, id, approved: false};
+    fileObj[id] = {value, id};
   });
 
   return {
@@ -29,27 +29,31 @@ export const toggleApprove = (id) => {
 
 export const uploadFiles = () => {
   return (dispatch, getState) => {
-    const {files} = getState();
-    const {byId, allIds} = files;
-    let file = byId[allIds[0]].value;
-    axios.get('/api/upload', {
-      params: {
-        filename: file.name,
-        filetype: file.type
+    const {files, currentFiles, approvedFiles} = getState();
+    currentFiles.forEach(id => {
+      if (approvedFiles[id]) {
+        const file = files[id].value;
+        console.log('uploading', file.name)
+        axios.get('/api/upload', {
+          params: {
+            filename: file.name,
+            filetype: file.type
+          }
+        })
+        .then(result => {
+          let signedUrl = result.data.signedUrl;
+          let options = {
+            headers: {
+              'Content-Type': file.type,
+            },
+            onUploadProgress: function (e) {
+              console.log(e);
+            }
+          };
+    
+          return axios.put(signedUrl, file, options);
+        })
       }
-    })
-    .then(result => {
-      let signedUrl = result.data.signedUrl;
-      let options = {
-        headers: {
-          'Content-Type': file.type,
-        },
-        onUploadProgress: function (e) {
-          console.log(e);
-        }
-      };
-
-      return axios.put(signedUrl, file, options);
     })
   }
 }

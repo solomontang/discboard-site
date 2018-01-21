@@ -1,6 +1,7 @@
 import axios from 'axios';
 import cuid from 'cuid';
-import {ADD_FILES, TOGGLE_APPROVE} from './actionTypes';
+import {ADD_FILES, TOGGLE_APPROVE, SET_PROGRESS} from './actionTypes';
+import {setProgress} from './progress';
 
 export const addFiles = (files) => {
   let fileObj = {};
@@ -47,7 +48,8 @@ export const uploadFiles = () => {
               'Content-Type': file.type,
             },
             onUploadProgress: function (e) {
-              console.log(e);
+              console.log(e.loaded);
+              dispatch(setProgress(id, Math.floor((e.loaded / e.total ) * 100)))
             }
           };
     

@@ -16,3 +16,5 @@ export const SAVE_ERROR = 'SAVE_ERROR';
 export const SAVE_SUCCESS = 'SAVE_SUCCESS'
 export const SAVE_TASKS = 'SAVE_TASKS';
 export const SAVE_ELIGIBLE = 'SAVE_ELIGIBLE';
+
+export const SET_PROGRESS = 'SET_PROGRESS';

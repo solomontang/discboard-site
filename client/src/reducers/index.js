@@ -4,6 +4,7 @@ import tasks from './tasks';
 import files from './files';
 import approvedFiles from './approvedFiles';
 import currentFiles from './currentFiles';
+import progress from './progress';
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   tasks,
   files,
   approvedFiles,
-  currentFiles
+  currentFiles,
+  progress
 });
 
 export default rootReducer;

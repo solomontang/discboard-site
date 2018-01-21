@@ -5,7 +5,7 @@ import FileRow from './FileRow'
 class FileList extends PureComponent {
   
   render () {
-    const {files, currentFiles, approvedFiles, openDialog, toggleApprove, uploadFiles} = this.props;
+    const {files, currentFiles, approvedFiles, progress, openDialog, toggleApprove, uploadFiles} = this.props;
     return (
       <Table compact celled definition striped>
         <Table.Header>
@@ -18,7 +18,7 @@ class FileList extends PureComponent {
         </Table.Header>
         <Table.Body>
           {currentFiles.map( id => {
-              return <FileRow file={files[id]} approved= {approvedFiles[id]} toggleApprove={toggleApprove} key={id}/>
+              return <FileRow file={files[id]} approved= {approvedFiles[id]} toggleApprove={toggleApprove} progress={progress[id]} key={id}/>
             })}
         </Table.Body>
         <Table.Footer fullWidth>

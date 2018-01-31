@@ -8,12 +8,12 @@ aws.config.update({
 });
 
 exports = module.exports = {
-  sign: function(filename, filetype) {
+  sign: function({filename, filetype, guild}) {
     var s3 = new aws.S3();
 
     var params = {
       Bucket: config.BUCKET_URL,
-      Key: filename,
+      Key: guild + '/' + filename,
       Expires: 60,
       ContentType: filetype,
       ACL: 'public-read'

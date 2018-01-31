@@ -1,9 +1,10 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import {connect} from 'react-redux';
 import Dropzone from 'react-dropzone';
 import FileContainer from './FileContainer';
 import {addFiles} from '../actions/files';
-class UploadContainer extends Component {
+
+class UploadContainer extends PureComponent {
   constructor(props) {
     super(props);
   }

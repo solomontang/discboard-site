@@ -23,7 +23,7 @@ class FileRow extends PureComponent {
         <Table.Cell>{file.value.name}</Table.Cell>
         <Table.Cell collapsing>
           <audio controls name="media">
-            <source src={file.value.preview} type="audio/wav" />
+            <source src={file.value.preview} />
           </audio>
         </Table.Cell>
         <Table.Cell>

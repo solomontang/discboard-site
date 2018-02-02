@@ -42,7 +42,8 @@ const getOrCreateOAuthUser = (oauthUser, done) => {
         discord_id: oauthUser.id,
         username: oauthUser.username,
         discriminator: oauthUser.discriminator,
-        avatar: oauthUser.avatar
+        avatar: oauthUser.avatar,
+        access_token: oauthUser.accessToken
       }
       if (user) {
         return user.save(userInfo, {method: 'update'});

@@ -28,19 +28,22 @@ export const toggleApprove = (id) => {
   }
 }
 
+const fetchSignedUrl = (file, guild) => {
+  return axios.get('api/upload', {
+    params: {
+      filename: file.name,
+      filetype: file.type
+    }
+  });
+}
+
 export const uploadFiles = () => {
   return (dispatch, getState) => {
     const {files, currentFiles, approvedFiles} = getState();
     currentFiles.forEach(id => {
       if (approvedFiles[id]) {
         const file = files[id].value;
-        console.log('uploading', file.name)
-        axios.get('/api/upload', {
-          params: {
-            filename: file.name,
-            filetype: file.type
-          }
-        })
+        fetchSignedUrl(file)
         .then(result => {
           let signedUrl = result.data.signedUrl;
           let options = {
@@ -48,7 +51,6 @@ export const uploadFiles = () => {
               'Content-Type': file.type,
             },
             onUploadProgress: function (e) {
-              console.log(e.loaded);
               dispatch(setProgress(id, Math.floor((e.loaded / e.total ) * 100)))
             }
           };

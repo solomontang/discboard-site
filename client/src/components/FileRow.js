@@ -16,9 +16,8 @@ class FileRow extends PureComponent {
     const {file, toggleApprove, progress, approved} = this.props;
     return (
       <Table.Row>
-        {console.log('render')}
         <Table.Cell collapsing>
-          <Checkbox toggle checked={approved} onClick={this.handleClick}/>
+          <Checkbox checked={approved} onClick={this.handleClick}/>
         </Table.Cell>
         <Table.Cell>{file.value.name}</Table.Cell>
         <Table.Cell collapsing>

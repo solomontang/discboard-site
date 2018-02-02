@@ -8,6 +8,11 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import {
+  BrowserRouter as Router,
+  browserHistory
+} from 'react-router-dom';
+
 import rootReducer from './reducers';
 
 //redux devtools extension
@@ -20,7 +25,9 @@ const store = createStore(rootReducer, {user: 'Solomon'}, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={browserHistory}>
+      <App />
+    </Router>
   </Provider>
   , document.getElementById('root'));
 registerServiceWorker();

@@ -9,13 +9,7 @@ class UploadContainer extends PureComponent {
   constructor(props) {
     super(props);
   }
-
-  componentDidMount() {
-    axios.get('https://discordapp.com/api/v6/users/@me', (result) => {
-      console.log(result);
-    })
-  }
-
+  
   render() {
     const {files} = this.props;
     let dropzoneRef;

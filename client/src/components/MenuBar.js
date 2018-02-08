@@ -4,7 +4,7 @@ import {Link, NavLink} from 'react-router-dom'
 
 const items = [
   {as: NavLink, to: '/invite', key: 'Invite', name: 'Invite'},
-  {as: NavLink, to: '/test', key: 'Manage', name: 'Manage'}
+  {as: NavLink, to: '/manage', key: 'Manage', name: 'Manage'}
 ]
 
 const MenuBar = (props) => (

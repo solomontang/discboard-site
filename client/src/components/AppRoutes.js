@@ -2,11 +2,16 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import UploadContainer from '../containers/UploadContainer';
+import NotFound from './NotFound';
 
 const routes = [
   {
-    path: '/',
+    path: '/manage',
     component: UploadContainer
+  },
+  {
+    path: '/*',
+    component: NotFound
   }
 ]
 

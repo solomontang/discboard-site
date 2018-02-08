@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import user from './user';
+import guilds from './guilds';
 import tasks from './tasks';
 import files from './files';
 import approvedFiles from './approvedFiles';
@@ -9,6 +10,7 @@ import progress from './progress';
 
 const rootReducer = combineReducers({
   user,
+  guilds,
   tasks,
   files,
   approvedFiles,

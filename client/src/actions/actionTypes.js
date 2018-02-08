@@ -1,5 +1,7 @@
 export const SET_USER = 'SET_USER';
 
+export const SET_GUILDS = 'SET_GUILDS';
+
 export const ADD_TASK = 'ADD_TASK';
 export const DESTROY_TASK = 'DESTROY_TASK';
 

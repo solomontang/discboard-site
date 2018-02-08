@@ -9,7 +9,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  return models.User.where({ id }).fetch()
+  return models.User.where({ id }).fetch({columns:['id','discord_id','username','discriminator','avatar']})
     .then(user => {
       if (!user) {
         throw user;

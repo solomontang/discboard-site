@@ -9,6 +9,6 @@ router.route('/@me')
   });
 
   router.route('/@me/guilds')
-  .get(UserController.getGuilds);
+  .get(UserController.sendGuilds);
 
 module.exports = router;

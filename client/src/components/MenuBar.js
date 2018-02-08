@@ -8,7 +8,7 @@ const items = [
 ]
 
 const MenuBar = (props) => (
-  <Menu pointing secondary color='blue' inverted items={items} />
+  <Menu pointing secondary color='blue' inverted size='massive' items={items} />
 );
 
 export default MenuBar;

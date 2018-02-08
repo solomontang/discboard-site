@@ -3,10 +3,15 @@ import {Route, Switch} from 'react-router-dom';
 
 import UploadContainer from '../containers/UploadContainer';
 import NotFound from './NotFound';
+import Home from './Home';
 
 const routes = [
   {
-    path: '/manage',
+    path: '/',
+    component: Home
+  },
+  {
+    path: '/manage/',
     component: UploadContainer
   },
   {

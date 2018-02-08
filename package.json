@@ -2,9 +2,13 @@
   "name": "discboard-site",
   "version": "1.0.0",
   "scripts": {
-    "start": "nodemon server",
-    "test": "NODE_ENV=test grunt test",
-    "build": "webpack --watch"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "server-start": "nodemon server",
+    "server-test": "NODE_ENV=test grunt test",
+    "build-old": "webpack --watch"
   },
   "author": "Solomon Tang",
   "license": "MIT",
@@ -17,6 +21,7 @@
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.1.0",
     "redis": "^2.7.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",

@@ -9,8 +9,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import {
-  BrowserRouter as Router,
-  browserHistory
+  BrowserRouter as Router
 } from 'react-router-dom';
 
 import rootReducer from './reducers';
@@ -21,11 +20,18 @@ const enhancer = composeEnhancers(
   applyMiddleware(thunk)
 );
 
-const store = createStore(rootReducer, {user: 'Solomon'}, enhancer);
+const initialState = {
+  user: window.__PRELOADED_STATE__.user,
+  guilds: window.__PRELOADED_STATE__.guilds
+}
+
+delete window.__PRELOADED_STATE__;
+
+const store = createStore(rootReducer, initialState, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router>
       <App />
     </Router>
   </Provider>

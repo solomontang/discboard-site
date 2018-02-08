@@ -1,11 +1,17 @@
 const express = require('express');
 const middleware = require('../middleware');
+const UserController = require('../controllers').Users;
 
 const router = express.Router();
 
 router.route('/')
-  .get(middleware.auth.verify, (req, res) => {
-    res.render('index.ejs');
+  .get(middleware.auth.verify, async (req, res) => {
+    let guilds = await UserController.getGuilds(req);
+    console.log(guilds);
+    res.render('index.ejs', {
+      user: req.user,
+      guilds
+    });
   });
 
 router.route('/login')

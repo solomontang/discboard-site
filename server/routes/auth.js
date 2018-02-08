@@ -76,4 +76,9 @@ router.get('/auth/twitter/callback', middleware.passport.authenticate('twitter',
   failureRedirect: '/login'
 }));
 
+router.route('/*')
+  .get(middleware.auth.verify, (req, res) => {
+    res.render('index.ejs');
+  });
+  
 module.exports = router;

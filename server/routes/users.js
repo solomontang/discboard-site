@@ -1,15 +1,14 @@
 'use strict';
 const express = require('express');
-const middleware = require('../middleware');
 const router = express.Router();
 const UserController = require('../controllers').Users;
 
 router.route('/@me')
-  .get(middleware.auth.verify, (req, res) => {
+  .get((req, res) => {
     res.status(200).send('users/@me');
   });
 
   router.route('/@me/guilds')
-  .get(middleware.auth.verify, UserController.getGuilds);
+  .get(UserController.getGuilds);
 
 module.exports = router;

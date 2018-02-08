@@ -1,7 +1,16 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const UploadController = require('../controllers').Upload
+const middleware = require('../middleware');
+
+const users = require('./users');
+const profiles = require('./profiles');
+const upload = require('./upload');
+
+router.use(middleware.auth.verify);
+router.use('/users', users);
+router.use('/profiles', profiles);
+router.use('/upload', upload);
 
 router.route('/')
   .get((req, res) => {
@@ -12,6 +21,4 @@ router.route('/')
     res.status(201).send({ data: 'Posted!' });
   });
 
-router.route('/upload')
-  .get(UploadController.getSigned);
 module.exports = router;

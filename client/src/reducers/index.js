@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import user from './user';
 import guilds from './guilds';
 import tasks from './tasks';
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   files,
   approvedFiles,
   currentFiles,
-  progress
+  progress,
+  router: routerReducer
 });
 
 export default rootReducer;

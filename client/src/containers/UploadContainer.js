@@ -13,7 +13,6 @@ class UploadContainer extends PureComponent {
   
   render() {
     const {files} = this.props;
-    console.log(this.props);
     let dropzoneRef;
     return (
     <div>

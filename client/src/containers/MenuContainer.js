@@ -1,25 +1,22 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux';
-import {toggleApprove, uploadFiles} from '../actions/files';
+import { connect } from 'react-redux';
+
+import {selectGuild} from '../actions/guilds';
 import MenuBar from '../components/MenuBar';
 
-const mapStateToProps = ({files, approvedFiles, currentFiles, progress}) => {
+const mapStateToProps = ({user, guilds, currentGuild}) => {
   return {
-    // files,
-    // approvedFiles,
-    // currentFiles,
-    // progress
+    user,
+    guilds,
+    currentGuild
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // toggleApprove: (id) => {
-    //   dispatch(toggleApprove(id));
-    // },
-    // uploadFiles: () => {
-    //   dispatch(uploadFiles());
-    // }
+    selectGuild: (e, data) => {
+      dispatch(selectGuild(e, data));
+    }
   }
 }
 

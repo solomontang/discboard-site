@@ -11,7 +11,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/manage/',
+    path: '/manage',
     component: UploadContainer
   },
   {

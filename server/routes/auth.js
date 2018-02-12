@@ -7,7 +7,6 @@ const router = express.Router();
 router.route('/')
   .get(middleware.auth.verify, async (req, res) => {
     let guilds = await UserController.getGuilds(req);
-    console.log(guilds);
     res.render('index.ejs', {
       user: req.user,
       guilds
@@ -83,8 +82,12 @@ router.get('/auth/twitter/callback', middleware.passport.authenticate('twitter',
 }));
 
 router.route('/*')
-  .get(middleware.auth.verify, (req, res) => {
-    res.render('index.ejs');
+  .get(middleware.auth.verify, async (req, res) => {
+    let guilds = await UserController.getGuilds(req);
+    res.render('index.ejs', {
+      user: req.user,
+      guilds
+    });
   });
   
 module.exports = router;

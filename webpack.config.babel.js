@@ -32,7 +32,7 @@ const config = {
       },
       {
         test: /\.css$/,
-        include: /node_modules/,
+        include: [path.join(__dirname,'node_modules'), path.join(__dirname, 'client/src')],
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [

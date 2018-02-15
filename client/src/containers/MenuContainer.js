@@ -15,7 +15,7 @@ const mapStateToProps = ({user, guilds, currentGuild}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectGuild: (e, data) => {
-      dispatch(selectGuild(e, data));
+      dispatch(selectGuild(data.value));
     }
   }
 }

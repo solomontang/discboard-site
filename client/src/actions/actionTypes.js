@@ -21,3 +21,5 @@ export const SAVE_TASKS = 'SAVE_TASKS';
 export const SAVE_ELIGIBLE = 'SAVE_ELIGIBLE';
 
 export const SET_PROGRESS = 'SET_PROGRESS';
+
+export const LOCATION_CHANGE = '@@router/LOCATION_CHANGE';

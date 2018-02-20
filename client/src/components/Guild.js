@@ -19,11 +19,11 @@ class Guild extends PureComponent {
   // }
 
   render() {
-    const { currentGuild, match, guilds } = this.props;
+    const { currentGuild, guilds } = this.props;
     
     return (
       <h1>
-        Current Guild ID: {currentGuild.id}
+        {guilds[currentGuild.id].name}
       </h1>
     )
   }

@@ -4,8 +4,9 @@ import {connect} from 'react-redux';
 import {selectGuild} from '../actions/guilds';
 import Guild from '../components/Guild';
 
-const mapStateToProps = ({currentGuild}) => {
+const mapStateToProps = ({guilds, currentGuild}) => {
   return {
+    guilds,
     currentGuild
   }
 }

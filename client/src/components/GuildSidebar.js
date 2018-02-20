@@ -16,7 +16,7 @@ class GuildSidebar extends PureComponent {
   guildList() {
     const { guilds } = this.props;
     
-    return guilds.map(guild => {
+    return Object.values(guilds).map(guild => {
       return (
         <Menu.Item as={NavLink} to={'/guild/' + guild.id} name={guild.name} key={guild.id} onClick={this.handleClick}/>
       )

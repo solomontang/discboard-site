@@ -29,21 +29,22 @@ export const toggleApprove = (id) => {
 }
 
 const fetchSignedUrl = (file, guild) => {
-  return axios.get('api/upload', {
+  return axios.get('/api/upload', {
     params: {
       filename: file.name,
-      filetype: file.type
+      filetype: file.type,
+      guild
     }
   });
 }
 
 export const uploadFiles = () => {
   return (dispatch, getState) => {
-    const {files, currentFiles, approvedFiles} = getState();
+    const {files, currentFiles, approvedFiles, currentGuild} = getState();
     currentFiles.forEach(id => {
       if (approvedFiles[id]) {
         const file = files[id].value;
-        fetchSignedUrl(file)
+        fetchSignedUrl(file, currentGuild.id)
         .then(result => {
           let signedUrl = result.data.signedUrl;
           let options = {

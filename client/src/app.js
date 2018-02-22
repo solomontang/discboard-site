@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Container, Sidebar, Icon, Segment, Image, Header, Grid, Button } from 'semantic-ui-react';
+import { Menu, Container, Sidebar, Segment, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import AppRoutes from './components/AppRoutes';
@@ -24,18 +24,16 @@ class App extends Component {
       <div className="App">
         
         <MenuContainer style={{minHeight: '5vh'}}/>
-
-        <Sidebar.Pushable as={Grid} style={{minHeight: '95vh'}}>
-          <SidebarContainer/>
-          <Sidebar.Pusher>
-            <Segment basic>
-              {/* <Header as='h3'>Application Content Placeholder</Header> */}
-              <AppRoutes />
-              {/* <Button onClick={this.toggleVisibility}>Toggle Visibility</Button> */}
-              {/* <Image src='/assets/images/wireframe/paragraph.png' /> */}
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+        {/* <Container fluid style={{width: '100vw'}}> */}
+          <Sidebar.Pushable style={{minHeight: '95vh'}}>
+            <SidebarContainer/>
+            <Sidebar.Pusher>
+              <Grid attached='bottom' padded style={{width: 'calc(100% - 150px)'}}>
+                <AppRoutes />
+              </Grid>
+            </Sidebar.Pusher>
+          </Sidebar.Pushable>
+        {/* </Container> */}
       </div>
     );
   }

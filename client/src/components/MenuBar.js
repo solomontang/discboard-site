@@ -10,14 +10,12 @@ class MenuBar extends PureComponent {
   render() {
     const {guilds, user, selectGuild, currentGuild} = this.props;
     return (
-      <Menu inverted pointing secondary color='blue'>
+      <Menu inverted pointing secondary borderless color='blue' attached='top'>
         <Menu.Item header>DiscBoard</Menu.Item>
         <Menu.Item as={Link} to='/invite' name='Invite'/>
-        <Menu.Item as={Link} to={'/guild/' + currentGuild.id + '/upload'}name='upload'/>
         <Menu.Item position='right'>
-          {/* <GuildDropdownContainer /> */}
         </Menu.Item>
-        <Menu.Item as={Link} to='/profile' name={user.username} />
+        <Menu.Item name={user.username} />
         <Menu.Item as={Link} to='/logout' name='Log out'/>
       </Menu>
     )

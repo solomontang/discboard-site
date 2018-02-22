@@ -25,11 +25,12 @@ const routes = [
   {
     path: '/guild/:id',
     component: GuildContainer,
-    exact: true
+    exact: false
   },
   {
     path: '/*',
-    component: NotFound
+    component: NotFound,
+    exact: false
   }
 ]
 

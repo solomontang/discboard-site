@@ -14,7 +14,7 @@ exports = module.exports = {
     var params = {
       Bucket: config.BUCKET_URL,
       Key: guild + '/' + filename,
-      Expires: 60,
+      Expires: 600,
       ContentType: filetype,
       ACL: 'public-read'
     };

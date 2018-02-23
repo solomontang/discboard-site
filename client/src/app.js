@@ -23,12 +23,12 @@ class App extends Component {
     return (
       <div className="App">
         
-        <MenuContainer style={{minHeight: '5vh'}}/>
+        <MenuContainer style={{height: '5vh'}}/>
         {/* <Container fluid style={{width: '100vw'}}> */}
-          <Sidebar.Pushable style={{minHeight: '95vh'}}>
+          <Sidebar.Pushable style={{height: '95vh'}}>
             <SidebarContainer/>
-            <Sidebar.Pusher>
-              <Grid attached='bottom' padded style={{width: 'calc(100% - 150px)'}}>
+            <Sidebar.Pusher style={{width: 'calc(100vw - 150px)'}}>
+              <Grid padded centered stretched style={{height: '95vh'}}>
                 <AppRoutes />
               </Grid>
             </Sidebar.Pusher>

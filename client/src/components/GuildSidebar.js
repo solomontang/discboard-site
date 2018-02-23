@@ -25,7 +25,7 @@ class GuildSidebar extends PureComponent {
 
   render() {
     return (
-      <Sidebar as={Menu} animation='push' width='thin' visible={true} icon='labeled' vertical>
+      <Sidebar as={Menu} animation='slide along' width='thin' visible={true} icon='labeled' vertical>
         <Menu.Header name='guilds'>
           <Icon name='shield' />
           Guilds

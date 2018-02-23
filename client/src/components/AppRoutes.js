@@ -12,11 +12,6 @@ const routes = [
     component: Home,
     exact: true
   },
-  // {
-  //   path: '/guild/:id/upload',
-  //   component: UploadContainer,
-  //   exact: true
-  // },
   {
     path: '/logout',
     component: () => window.location = '/logout',
